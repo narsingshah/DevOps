@@ -9,11 +9,21 @@
 git config --global user.name "narsingshah"
 git config --global user.email "narsingshah@gmail.com"
 
-Add your system private key inside git --> settings --ssh keys section
-cat /Users/narsid/.ssh/id_ed25519.pub
+# ssh
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+# run below commands
+ssh-keygen -t ed25519 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
 
-token : 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    
+# edit the config file after starting agent
+Host github.com
+  AddKeysToAgent yes
+  #UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+  IgnoreUnknown UseKeychain
 
+# no need to add any options in below command
+ssh-add  ~/.ssh/id_ed25519
 
 ## Commands: We have used in Our Video
 
